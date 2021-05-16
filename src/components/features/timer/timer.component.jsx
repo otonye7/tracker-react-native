@@ -15,7 +15,16 @@ const Timer = ({focusSubject}) => {
                 <Text style={styles.title}>We are focusing on:</Text>
                 <Text style={styles.task}>{focusSubject}</Text>
             </View>
-            <RoundedButtons title='start' size={50} onPress={() => setIsStarted(true)}/>
+            <View style={styles.buttonWrapper}>
+            {
+                isStarted 
+                ?
+                <RoundedButtons title='pause'  onPress={() => setIsStarted(false)}/>
+                :
+                  <RoundedButtons title='start'  onPress={() => setIsStarted(true)}/>
+            }
+          </View>
+            
         </View>
     )
 }
@@ -37,6 +46,12 @@ const styles = StyleSheet.create({
         flex: 0.5,
         alignItems: 'center',
         justifyContent: 'center'
+    },
+    buttonWrapper: {
+        flex: 0.3,
+        padding: 15,
+        justifyContent: 'center',
+        alignItems: 'center'
     }
 })
 
